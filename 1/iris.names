@@ -1,0 +1,17 @@
+1. Title: Iris Plants Database
+	Updated Sept 21 by C.Blake - Added discrepancy information
+
+2. Sources:
+     (a) Creator: R.A. Fisher
+     (b) Donor: Michael Marshall (MARSHALL%PLU@io.arc.nasa.gov)
+     (c) Date: July, 1988
+
+3. Attribute Information:
+   1. sepal length in cm
+   2. sepal width in cm
+   3. petal length in cm
+   4. petal width in cm
+   5. class: 
+      -- 1 = Iris Setosa
+      -- 2 = Iris Versicolor
+      -- 3 = Iris Virginica
