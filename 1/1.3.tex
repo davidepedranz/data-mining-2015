@@ -1,0 +1,65 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+
+\title{Exercise 1}
+\subtitle{Data Mining Algorithms 1 - WS 2015/16}
+\author{Davide Pedranz (362504)}
+
+% document
+\begin{document}
+
+% print title first
+\maketitle
+
+\section*{Exercise 1.3}
+We denote the set of data already present in the Data Warehouse with $D_{w}$ and the new entries with $D_{new}$. We have $D = D_{w} \cup D_{new}$, where $D$ is the set of all data after the entries are added.
+
+\subsection*{(a) Mean}
+The $mean$ is defined as follows:
+
+$$ mean(D) = \frac{sum(D)}{count(D)} $$
+
+\bigskip
+The functions $sum$ and $count$ are distributive, so we have:
+
+$$ mean(D) = mean(D_{w} \cup D_{new}) = \frac{sum(D_{w} \cup D_{new})}{count(D_{w} \cup D_{new})} = \frac{sum(D_{w}) + sum(D_{new})}{count(D_{w}) + count(D_{new})} $$
+
+\bigskip
+It is sufficient to store the values $sum(D_{w})$ and $count(D_{w})$ from the last aggregation in order to accelerate the computation of the new one.
+
+Since the $mean$ can be computed by applying the distributive functions $sum$ and $count$ a limited number of times (twice in this case), we conclude that $mean$ is an algebraic measure.
+
+\subsection*{(b) 25\% quantile of the values}
+The 25\% quantile is defined as a value that partition the dataset into 2 subsets, which contains respectively the 25\% and 75\% of the values. To efficiently determine this value, we have to order the values. The computation of the next aggregation can be accelerated storing the data in order, that decreses the complexity of the ordering phase.
+
+The storage size needed for the computation is linear to the data's dimension, so the 25\% quantile is a holistic measure.
+
+\subsection*{(c) Variance}
+The $variance$ is defined as follows:
+
+$$ \delta^2 = \frac{1}{n-1} \sum\limits_{i=1}^n (x_i - \overline{x})^2 $$
+
+\bigskip
+Since adding new data to the Data Warehouse affects the mean, we have to recompute $(x_i - \overline{x})$ for each value in the dataset. Thus, the variance is a holistic measure.
+
+\bigskip
+If an approximation of the $variance$ is sufficient, we can use this formula:
+
+$$ \delta^2 = \frac{1}{n-1} \Big[ \sum\limits_{i=1}^n x_i^2 - \frac{1}{n}(\sum\limits_{i=1}^n x_i)^2 \Big] $$
+
+\bigskip
+Since $sum$ and $count$ are distributive measures, we have the following:
+
+\begin{multline*}
+variance(D) = \frac{1}{count(D) - 1} \Big( sum(\{d^2 | d \in D\}) - \frac{sum(D)^2}{count(D)} \Big) = \\
+= \frac{1}{count(D_{w}) + count(D_{new}) - 1} \Big( sum(\{d^2 | d \in D_{w}\}) + sum(\{d^2 | d \in D_{new}\}) - \\
+- \frac{sum(D_{w})^2 + sum(D_{new})^2}{count(D_{w}) + count(D_{new}) } \Big)
+\end{multline*}
+
+\bigskip
+Thus, it is sufficient to store the values $count(D_{w})$, $sum(D_{w})$ and $sum(\{d^2 | d \in D_{w}\})$ to accelerate the next aggregation. Since these values are indipendent from $|D_{w}|$, this approximation of the variance is an algebraic measure.
+
+
+\end{document}
