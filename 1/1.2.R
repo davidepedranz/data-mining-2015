@@ -1,7 +1,9 @@
 ################################################
 # Exercise 1.2 - 26th october 2015
 #
-# Davide Pedranz - 362504
+# Davide Pedranz (362504)
+# Jakub Amanowicz
+# Hongmei Liang
 ################################################
 
 # b - load data from csv files

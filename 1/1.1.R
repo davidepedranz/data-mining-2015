@@ -1,7 +1,9 @@
 ################################################
 # Exercise 1.1 - 26th october 2015
 #
-# Davide Pedranz - 362504
+# Davide Pedranz (362504)
+# Jakub Amanowicz
+# Hongmei Liang
 ################################################
 
 # a - create a vector
