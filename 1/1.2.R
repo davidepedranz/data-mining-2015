@@ -2,8 +2,8 @@
 # Exercise 1.2 - 26th october 2015
 #
 # Davide Pedranz (362504)
-# Jakub Amanowicz
-# Hongmei Liang
+# Jakub Amanowicz (362594)
+# Hongmei Liang (292520)
 ################################################
 
 # b - load data from csv files
@@ -34,3 +34,10 @@ plot(test, col=cluster4$cluster)
 
 # g - plot (different colous for original classes)
 plot(test, col=iris$class)
+
+# h - tasks
+# b   -> data integration
+# c   -> data cleaning
+# d   -> projection
+# e   -> data mining (clustering)
+# f,g -> visualization
