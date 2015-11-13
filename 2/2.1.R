@@ -1,7 +1,7 @@
 ################################################
 # Exercise 2.1 - 4th november 2015
 #
-# Davide Pedranz - 362504
+# Davide Pedranz - (362504)
 # Jakub Amanowicz (362594)
 # Hongmei Liang (292520)
 ################################################
