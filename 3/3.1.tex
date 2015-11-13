@@ -33,7 +33,7 @@ Let $S \subseteq T$ be an itemset of $T$  and $S' \subseteq S$ a subset of $S$. 
 \{ T \in D \mid S' \subseteq T \} \overset{S' \subseteq S \subseteq T}{\supseteq}  \{ T \in D \mid S \subseteq T \}
 \end{equation}
 
-If follows:
+It follows:
 
 \begin{equation*}
 support(S') \overset{def}{=} |\{ T \in D \mid S' \subseteq T \}| \overset{(\ref{eq:1})}{\geq} |\{ T \in D \mid S \subseteq T \}| \overset{def}{=} support(S)
@@ -49,6 +49,12 @@ Since $S$ is frequent:
 
 \begin{equation*}
 support(S') \overset{(\ref{eq:2})}{\geq} support(S) \overset{S frequent}{\geq} minFreq
+\rightarrow
+\end{equation*}
+
+\begin{equation*}
+\rightarrow
+support(S') \geq minFreq
 \end{equation*}
 
 We conclude that $S'$ is frequent. \qed
