@@ -1,0 +1,62 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\newcommand{\qed}{$\hfill\square$}
+
+\title{Exercise 3}
+\subtitle{Data Mining Algorithms 1 - WS 2015/16}
+\author{
+  Davide Pedranz\\ \texttt{(362504)}
+  \and
+  Jakub Amanowicz \\ \texttt{(362594)}
+  \and
+  Hongmei Liang\\  \texttt{(292520)}
+}
+
+% document
+\begin{document}
+
+% print title first
+\maketitle
+
+\section*{Exercise 3.1}
+
+\subsection*{(a) Let $S \subseteq I$ be a frequent itemset. Then every non-empty subset $S' \subseteq S$ must also be
+frequent.}
+
+Let $D = \{T \mid T \subseteq I\}$ be the database of transactions and $T \in D$ a transaction in it.
+Let $S \subseteq T$ be an itemset of $T$  and $S' \subseteq S$ a subset of $S$. Then we have
+
+\begin{equation} \label{eq:1}
+\{ T \in D \mid S' \subseteq T \} \overset{S' \subseteq S \subseteq T}{\supseteq}  \{ T \in D \mid S \subseteq T \}
+\end{equation}
+
+If follows:
+
+\begin{equation*}
+support(S') \overset{def}{=} |\{ T \in D \mid S' \subseteq T \}| \overset{(\ref{eq:1})}{\geq} |\{ T \in D \mid S \subseteq T \}| \overset{def}{=} support(S)
+\end{equation*}
+
+Thus:
+
+\begin{equation} \label{eq:2}
+support(S') \geq support(S)
+\end{equation}
+
+Since $S$ is frequent:
+
+\begin{equation*}
+support(S') \overset{(\ref{eq:2})}{\geq} support(S) \overset{S frequent}{\geq} minFreq
+\end{equation*}
+
+We conclude that $S'$ is frequent. \qed
+
+\subsection*{(b) Let $S \subseteq I$ be an arbitrary itemset. Then $support(S') \geq support(S)$ holds for any non-
+empty subset $S' \subseteq S$.}
+
+See (\ref{eq:2}) in the previus proof.
+
+
+\end{document}
