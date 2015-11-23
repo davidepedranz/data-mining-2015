@@ -1,0 +1,52 @@
+\documentclass{scrartcl}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+
+\title{Exercise 4}
+\subtitle{Data Mining Algorithms 1 - WS 2015/16}
+\author{
+  Davide Pedranz\\ \texttt{(362504)}
+  \and
+  Jakub Amanowicz \\ \texttt{(362594)}
+  \and
+  Hongmei Liang\\  \texttt{(292520)}
+}
+
+\begin{document}
+\SweaveOpts{concordance=TRUE}
+\section*{Exercise 4.5}
+
+\subsection*{Code}
+\lstinputlisting[language=R, breaklines=true]{4.5.R}
+
+\bigskip
+\bigskip
+
+\subsection*{Output}
+<<echo=FALSE, cache=FALSE, messages=FALSE>>=
+library("arulesViz")
+data("Groceries")
+
+# a -> mine frequent itemsets
+frequent_itemsets <- sort(apriori(Groceries, parameter = list(support = 0.05, target="frequent itemsets")), by="support")
+inspect(frequent_itemsets)
+
+# b -> strong association rules
+rules <- sort(apriori(Groceries, parameter=list(support=0.004, confidence=0.7, minlen = 2, target="rules")), by="support")
+inspect(rules)
+
+# c -> scatter plot of association rules
+plot(rules, measure=c("support", "confidence"), shading="lift")
+@
+
+\subsection*{Graph}
+\includegraphics[width=\textwidth]{plot.png}
+
+\bigskip
+
+An interesting rule found is the following (with the highest confidence):
+$$\{citrus fruit, tropical fruit, root vegetables\} \Rightarrow \{other vegetables\}$$
+
+\end{document}
