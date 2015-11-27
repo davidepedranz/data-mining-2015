@@ -1,35 +1,34 @@
+################################################
+# Exercise 5.4 - 27th november 2015
+#
+# Davide Pedranz (362504)
+# Jakub Amanowicz (362594)
+# Hongmei Liang (292520)
+################################################
+
+
 # calculate the distance between 2 points
 distance <- function(p1, p2) {
-  d <- (p2 - p1) ^ 2
-  dist <- sqrt(sum(d))
-  return(dist);
+  return(sqrt(sum((p2 - p1) ^ 2)))
 }
 
 # X: n x d data-matrix
 # k: number of clusters
-# means: k x d matrix. The i-th row represents the mean of the i-th cluster
+# means: k x d matrix
 assignCluster <- function(X, k, means) {
+  # returns the cluster assignment vector
   
-  # create clusters
-  clusters <- c()
-  
-  # check each element
-  for(i in 1:dim(X)[1]) {
+  # for each row in the matrix (= each data point)
+  clusters <- apply(X, 1, function(x) {
     
-    current_object <- X[i,]
-    distances <- c()
-
-    # against each cluster
-    for(j in 1:dim(means)[1]) {
-      
-      current_mean <- means[j,]
-      d <- distance(current_object, current_mean)
-      distances[j] <- d
-    }
+    # calculate the distances from each mean point
+    dists <- apply(means, 1, function(m) {
+      return(distance(m, x))
+    })
     
-    min_index = which.min(distances)
-    clusters[i] <- min_index
-  }
+    # return the index of the nearest cluster's center
+    return(match(min(dists), dists))
+  })
   
   return(clusters)
 }
@@ -38,7 +37,7 @@ assignCluster <- function(X, k, means) {
 # k: number of clusters
 # clusters: cluster assignment vector (1 dimension)
 updateMean <- function(X, k, clusters) {
-  #update the mean points
+  # update the mean points
   
   # sum of values for each cluster (cluster indexed by row)
   sums <- matrix(nrow = k, ncol = dim(X)[2], data = 0)
@@ -51,8 +50,8 @@ updateMean <- function(X, k, clusters) {
     counts[cluster] <- counts[cluster] + 1
   }
   
-  means <- sums / counts
-  return(means)
+  # returns the means
+  return(sums / counts)
 }
 
 # X: n x d data-matrix
