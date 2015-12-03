@@ -1,5 +1,4 @@
 # test some code from the myKmeans.R file
-
 source('myKmeans.R')
 
 compare <- function(a, b) {
