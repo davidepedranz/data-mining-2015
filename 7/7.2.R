@@ -23,12 +23,7 @@ model_3 <- train(data[,-11], data[,11], method="nb", trControl = m_fold_3)
 model_5 <- train(data[,-11], data[,11], method="nb", trControl = m_fold_5)
 model_7 <- train(data[,-11], data[,11], method="nb", trControl = m_fold_7)
 
-# make predictions
-predictions_3 <- predict(model_3, data[,-11])
-predictions_5 <- predict(model_5, data[,-11])
-predictions_7 <- predict(model_7, data[,-11])
-
-# verify accuracy
-accuracy_3 <- length(which(predictions_3 == data[,11])) / length(predictions_3)
-accuracy_5 <- length(which(predictions_5 == data[,11])) / length(predictions_5)
-accuracy_7 <- length(which(predictions_7 == data[,11])) / length(predictions_7)
+# accuracy info are contained in the models
+print(model_3)
+print(model_5)
+print(model_7)
