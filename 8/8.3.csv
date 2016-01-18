@@ -1,0 +1,17 @@
+id,gender,useful,beautiful,selfmade,eatable,liked
+1,male,yes,yes,no,yes,yes
+2,male,yes,yes,yes,no,yes
+3,male,yes,no,yes,no,yes
+4,male,yes,yes,no,no,yes
+5,male,no,yes,yes,yes,yes
+6,male,no,little,no,yes,yes
+7,male,no,no,yes,no,no
+8,male,no,yes,no,no,no
+9,female,no,yes,no,yes,yes
+10,female,no,yes,no,no,yes
+11,female,no,little,yes,no,yes
+12,female,no,no,no,no,yes
+13,female,no,little,yes,no,yes
+14,female,no,little,yes,no,yes
+15,female,no,little,no,yes,no
+16,female,no,little,no,no,no
